@@ -191,7 +191,11 @@ export const calculateTaxTransporter = ({ method, state }) => {
           min(max(0, kw - 24 - 66), 20) * 0.7 +
           max(kw - 24 - 66 - 20, 0) * 0.79,
       ),
-    ) * PAYMENT_METHODS[method].monthsCount,
+    ) *
+      PAYMENT_METHODS[method].monthsCount *
+      (getDate(approval) < DATE_2020_10_01
+        ? PAYMENT_METHODS[method].chargeRate
+        : 1),
   );
 };
 
