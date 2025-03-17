@@ -176,6 +176,11 @@ const formDefinition = [
             depFieldValue: DATE_2020_10_01,
             depFieldValueCondition: '[DATE lte]',
           },
+          {
+            depFieldName: 'vehicle',
+            depFieldValue: 'car',
+            depFieldValueCondition: '=',
+          },
         ],
       },
       {
@@ -187,6 +192,11 @@ const formDefinition = [
             depFieldName: 'approval',
             depFieldValue: DATE_2020_10_01,
             depFieldValueCondition: '[DATE lte]',
+          },
+          {
+            depFieldName: 'vehicle',
+            depFieldValue: 'car',
+            depFieldValueCondition: '=',
           },
         ],
       },
