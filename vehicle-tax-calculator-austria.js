@@ -103,6 +103,11 @@ const formDefinition = [
             depFieldValue: '',
             depFieldValueCondition: 'NotEmpty',
           },
+          {
+            depFieldName: 'approval',
+            depFieldValue: '',
+            depFieldValueCondition: 'NotEmpty',
+          },
         ],
       },
       {
@@ -112,6 +117,11 @@ const formDefinition = [
         andGroup: [
           {
             depFieldName: 'transmission',
+            depFieldValue: '',
+            depFieldValueCondition: 'NotEmpty',
+          },
+          {
+            depFieldName: 'approval',
             depFieldValue: '',
             depFieldValueCondition: 'NotEmpty',
           },
@@ -150,6 +160,11 @@ const formDefinition = [
             depFieldValueCondition: 'NotEmpty',
           },
           {
+            depFieldName: 'approval',
+            depFieldValue: '',
+            depFieldValueCondition: 'NotEmpty',
+          },
+          {
             depFieldName: 'transmission',
             depFieldValue: 'electric',
             depFieldValueCondition: '!=',
@@ -178,8 +193,8 @@ const formDefinition = [
           },
           {
             depFieldName: 'vehicle',
-            depFieldValue: 'car',
-            depFieldValueCondition: '=',
+            depFieldValue: 'transporter',
+            depFieldValueCondition: '!=',
           },
         ],
       },
@@ -195,8 +210,8 @@ const formDefinition = [
           },
           {
             depFieldName: 'vehicle',
-            depFieldValue: 'car',
-            depFieldValueCondition: '=',
+            depFieldValue: 'transporter',
+            depFieldValueCondition: '!=',
           },
         ],
       },
