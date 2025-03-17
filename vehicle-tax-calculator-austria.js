@@ -100,8 +100,37 @@ const formDefinition = [
         andGroup: [
           {
             depFieldName: 'transmission',
+            depFieldValue: 'electric',
+            depFieldValueCondition: '!=',
+          },
+          {
+            depFieldName: 'approval',
             depFieldValue: '',
             depFieldValueCondition: 'NotEmpty',
+          },
+        ],
+      },
+      {
+        depFieldName: 'vehicle',
+        depFieldValue: 'car',
+        depFieldValueCondition: '=',
+        andGroup: [
+          {
+            depFieldName: 'transmission',
+            depFieldValue: 'electric',
+            depFieldValueCondition: '=',
+          },
+        ],
+      },
+      {
+        depFieldName: 'vehicle',
+        depFieldValue: 'transporter',
+        depFieldValueCondition: '=',
+        andGroup: [
+          {
+            depFieldName: 'transmission',
+            depFieldValue: 'electric',
+            depFieldValueCondition: '!=',
           },
           {
             depFieldName: 'approval',
@@ -117,13 +146,8 @@ const formDefinition = [
         andGroup: [
           {
             depFieldName: 'transmission',
-            depFieldValue: '',
-            depFieldValueCondition: 'NotEmpty',
-          },
-          {
-            depFieldName: 'approval',
-            depFieldValue: '',
-            depFieldValueCondition: 'NotEmpty',
+            depFieldValue: 'electric',
+            depFieldValueCondition: '=',
           },
         ],
       },
