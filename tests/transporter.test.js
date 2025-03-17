@@ -1,17 +1,33 @@
 import { expect, test } from 'vitest';
 import { calc } from '../src/calculations.js';
 
-// test('Trasporter Combustion 2020-09-30', () => {
-//   expect(
-//     calc({
-//       state: {
-//         vehicle: 'transporter',
-//         approval: '2020-09-30',
-//         kw: '100',
-//       },
-//     }),
-//   ).toBe(54.89);
-// });
+test('Trasporter Combustion 2020-09-30', () => {
+  expect(
+    calc({
+      method: 'month',
+      state: {
+        vehicle: 'transporter',
+        transmission: 'combustion',
+        approval: '2020-09-30',
+        kw: '100',
+      },
+    }),
+  ).toBe(54.89);
+});
+
+test('Trasporter Hybrid 2020-09-30', () => {
+  expect(
+    calc({
+      method: 'month',
+      state: {
+        vehicle: 'transporter',
+        transmission: 'hybrid',
+        approval: '2020-09-30',
+        kw: '100',
+      },
+    }),
+  ).toBe(54.89);
+});
 
 test('Transporter Combustion 2024-01-01', () => {
   expect(
