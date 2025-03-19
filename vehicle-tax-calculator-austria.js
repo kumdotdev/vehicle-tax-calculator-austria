@@ -37,14 +37,14 @@ const formDefinition = [
       text: $t(vehicle.type),
     })),
     name: 'vehicle',
-    value: '',
+    value: 'car',
     label: $t('label_vehicle'),
   },
   ...VEHICLES.map((vehicle) => {
     return {
       type: 'select',
       name: 'transmission',
-      value: '',
+      value: 'combustion',
       options: vehicle.transmissions.map((transmission) => ({
         val: transmission,
         text: $t(transmission),

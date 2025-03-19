@@ -51,7 +51,9 @@ export const calc = ({ method, state = {} }) => {
         return calculateTaxCarElectric({ method, year, state });
       }
       if (transmission === 'hybrid') {
-        return calculateTaxCarHybrid({ method, year, state });
+        return getDate(approval) < DATE_2020_10_01
+          ? calculateTaxCarOld({ method, year, state })
+          : calculateTaxCarHybrid({ method, year, state });
       }
       return getDate(approval) < DATE_2020_10_01
         ? calculateTaxCarOld({ method, year, state })
@@ -102,7 +104,6 @@ const calculateTaxCarOld = ({ method, state }) => {
 
 const calculateTaxCarHybrid = ({ method, year, state }) => {
   const { kw, co2, approval } = state;
-  console.log(year);
 
   if (!kw || !co2) return null;
   return roundToTwoDecimals(
