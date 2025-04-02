@@ -69,7 +69,9 @@ export const calc = ({ method, state = {} }) => {
       if (transmission === 'electric') {
         return calculateTaxTransporterElectric({ method, state });
       }
-      return calculateTaxTransporter({ method, state });
+      return getDate(approval) < DATE_2020_10_01
+        ? calculateTaxTransporterOld({ method, year, state })
+        : calculateTaxTransporter({ method, year, state });
     default:
       return null;
   }
@@ -179,13 +181,34 @@ export const calculateTaxMotorcycleElectric = ({ method, state }) => {
   );
 };
 
-export const calculateTaxTransporter = ({ method, state }) => {
+export const calculateTaxTransporterOld = ({ method, state }) => {
   const { approval, kw } = state;
   if (!kw) return null;
   if (approval === '') return null;
   return roundToTwoDecimals(
     max(
       6.2,
+      min(
+        72.0,
+        min(max(0, kw - 24), 66) * 0.62 +
+          min(max(0, kw - 24 - 66), 20) * 0.66 +
+          max(kw - 24 - 66 - 20, 0) * 0.75,
+      ),
+    ) *
+      PAYMENT_METHODS[method].monthsCount *
+      (getDate(approval) < DATE_2020_10_01
+        ? PAYMENT_METHODS[method].chargeRate
+        : 1),
+  );
+};
+
+export const calculateTaxTransporter = ({ method, state }) => {
+  const { approval, kw } = state;
+  if (!kw) return null;
+  if (approval === '') return null;
+  return roundToTwoDecimals(
+    max(
+      6.5,
       min(
         76.0,
         min(max(0, kw - 24), 66) * 0.65 +

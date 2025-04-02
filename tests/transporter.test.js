@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest';
 import { calc } from '../src/calculations.js';
 
-test('Trasporter Combustion 2020-09-30', () => {
+test('Transporter Combustion 2020-09-30', () => {
   expect(
     calc({
       method: 'month',
@@ -9,13 +9,13 @@ test('Trasporter Combustion 2020-09-30', () => {
         vehicle: 'transporter',
         transmission: 'combustion',
         approval: '2020-09-30',
-        kw: '100',
+        kw: '85',
       },
     }),
-  ).toBe(54.89);
+  ).toBe(41.6);
 });
 
-test('Trasporter Hybrid 2020-09-30', () => {
+test('Transporter Hybrid 2020-09-30', () => {
   expect(
     calc({
       method: 'month',
@@ -23,10 +23,10 @@ test('Trasporter Hybrid 2020-09-30', () => {
         vehicle: 'transporter',
         transmission: 'hybrid',
         approval: '2020-09-30',
-        kw: '100',
+        kw: '85',
       },
     }),
-  ).toBe(54.89);
+  ).toBe(41.6);
 });
 
 test('Transporter Combustion 2024-01-01', () => {
@@ -69,6 +69,34 @@ test('Transporter Electric 2024-01-01', () => {
       },
     }),
   ).toBe(666);
+});
+
+test('Transporter Combustion 2020-09-30', () => {
+  expect(
+    calc({
+      method: 'month',
+      state: {
+        vehicle: 'transporter',
+        transmission: 'combustion',
+        approval: '2020-09-30',
+        kw: '0',
+      },
+    }),
+  ).toBe(6.82);
+});
+
+test('Transporter Combustion 2019-09-30', () => {
+  expect(
+    calc({
+      method: 'month',
+      state: {
+        vehicle: 'transporter',
+        transmission: 'combustion',
+        approval: '2019-09-30',
+        kw: '250',
+      },
+    }),
+  ).toBe(79.20);
 });
 
 test('Transporter Electric 2024-01-01', () => {
